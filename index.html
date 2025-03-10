@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maico Minne - Desktop Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="desktop">
+    <!-- Watermark met typewriter-effect -->
+    <div class="watermark">
+      <span>Made By Maic</span>
+    </div>
+    
+    <!-- Desktop Icons -->
+    <div class="desktop-icons">
+      <!-- Vaste folders met vaste positie -->
+      <div class="icon-folder fixed" data-project="fixed1" style="left: 20px; top: 20px;">
+        <img src="/images/pc.png" alt="Map">
+        <p>My PC</p>
+      </div>
+      <div class="icon-folder fixed" data-project="fixed2" style="left: 20px; top: 120px;">
+        <img src="/images/trash.png" alt="Map">
+        <p>Trash</p>
+      </div>
+      <!-- Extra vaste folder: Project 5, onder vaste map 2 -->
+      <div class="icon-folder fixed" data-project="project5" style="left: 20px; top: 220px;">
+        <img src="/images/snake.png" alt="Map">
+        <p>Snake</p>
+      </div>
+      
+      <!-- Andere folders (random gepositioneerd) -->
+      <div class="icon-folder" data-project="project1">
+        <img src="images/map.png" alt="Map">
+        <p>Over Mij</p>
+      </div>
+      <div class="icon-folder" data-project="project2">
+        <img src="images/map.png" alt="Map">
+        <p>Projecten</p>
+      </div>
+      <div class="icon-folder" data-project="project3">
+        <img src="images/map.png" alt="Map">
+        <p>Vaardigheden</p>
+      </div>
+      <div class="icon-folder" data-project="project4">
+        <img src="images/map.png" alt="Map">
+        <p>Contact</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal venster voor projectpagina's -->
+  <div id="modal-window" class="modal-window">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <iframe id="modal-iframe" src="" frameborder="0"></iframe>
+    </div>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>

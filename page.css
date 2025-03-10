@@ -1,0 +1,62 @@
+/* Basis reset voor projectpagina's */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Courier New', Courier, monospace;
+  background: radial-gradient(circle, #f7f7f7, #eaeaea);
+  color: #333;
+  line-height: 1.6;
+  padding-bottom: 60px; /* Zorg dat de inhoud niet onder eventuele modale elementen valt */
+}
+.page-container {
+  max-width: 800px;
+  margin: 80px auto 80px;
+  background: #ffffff;
+  padding: 20px 30px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  animation: fadeInSlide 1s forwards;
+}
+@keyframes fadeInSlide {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #007BFF;
+  text-align: center;
+}
+h2 {
+  font-size: 1.8em;
+  margin-top: 20px;
+  color: #333;
+  border-bottom: 1px solid #007BFF;
+  padding-bottom: 5px;
+}
+p {
+  font-size: 1.1em;
+  margin-bottom: 20px;
+}
+ul {
+  margin: 15px 0;
+  padding-left: 20px;
+}
+ul li {
+  margin-bottom: 10px;
+  font-size: 1.1em;
+  color: #333;
+}
+footer {
+  text-align: center;
+  padding: 10px;
+  color: #777;
+  font-size: 0.9em;
+  margin-top: 20px;
+}

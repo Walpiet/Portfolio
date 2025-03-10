@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Maico Minne</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="page.css">
+  <style>
+    /* Extra styling voor de contactpagina */
+    .contact-info {
+      margin: 20px 0;
+      font-size: 1.2em;
+      line-height: 1.8;
+    }
+    .contact-info ul {
+      list-style: none;
+      padding: 0;
+    }
+    .contact-info li {
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+    }
+    .contact-info span.label {
+      font-weight: bold;
+      width: 120px;
+    }
+    .contact-info span.value {
+      flex: 1;
+    }
+    .email-container {
+      display: flex;
+      align-items: center;
+    }
+    .contact-button {
+      margin-left: 10px;
+      padding: 6px 12px;
+      background-color: #007BFF;
+      color: #fff;
+      text-decoration: none;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .contact-button:hover {
+      background-color: #0056b3;
+    }
+    .website-link {
+      text-decoration: none;
+      color: #007BFF;
+      font-weight: bold;
+    }
+    .website-link:hover {
+      text-decoration: underline;
+    }
+    .profile-photo {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      display: block;
+      margin: 0 auto 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-container">
+    <h1>Contact</h1>
+    
+    <!-- Profielfoto -->
+    <img src="images/me.jpg" alt="Maico Minne" class="profile-photo">
+    
+    <div class="contact-info">
+      <ul>
+        <li>
+          <span class="label">Naam:</span>
+          <span class="value">Maico Minne</span>
+        </li>
+        <li>
+          <span class="label">Leeftijd:</span>
+          <span class="value">23 jaar</span>
+        </li>
+        <li>
+          <span class="label">Email:</span>
+          <div class="email-container">
+            <span class="value">maicominne@hotmail.be</span>
+            <a href="mailto:maicominne@hotmail.be" class="contact-button">Email mij</a>
+          </div>
+        </li>
+        <li>
+          <span class="label">Website:</span>
+          <span class="value">
+            <a href="http://www.zandstralen.be" target="_blank" class="website-link">zandstralen.be</a>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

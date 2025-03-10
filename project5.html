@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project 5 - Snake Game - Maico Minne</title>
+  <!-- Algemene old-school styling -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="page.css">
+  <style>
+    /* Extra styling voor de snake game pagina */
+    .snake-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 40px;
+    }
+    canvas {
+      background: #ffffff;
+      border: 2px solid #ddd;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    #score {
+      font-size: 1.2em;
+      margin-top: 10px;
+      color: #333;
+    }
+    #restartButton {
+      margin-top: 10px;
+      padding: 8px 16px;
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    #restartButton:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-container">
+    <h1>Snake Game</h1>
+    <div class="snake-container">
+      <canvas id="snakeCanvas" width="400" height="400"></canvas>
+      <p id="score">Score: 0</p>
+      <button id="restartButton" style="display: none;">Restart</button>
+    </div>
+  </div>
+  
+  <script>
+    // Simple Snake Game
+
+    const canvas = document.getElementById("snakeCanvas");
+    const ctx = canvas.getContext("2d");
+    const scoreEl = document.getElementById("score");
+    const restartButton = document.getElementById("restartButton");
+    const box = 20; // Gridcel grootte
+    let score = 0;
+    
+    // Maak de slang
+    let snake = [];
+    snake[0] = { x: 9 * box, y: 10 * box };
+
+    // Plaats het voedsel
+    let food = {
+      x: Math.floor(Math.random() * 19 + 1) * box,
+      y: Math.floor(Math.random() * 19 + 1) * box
+    };
+
+    let d = "RIGHT";
+    document.addEventListener("keydown", direction);
+
+    function direction(event) {
+      let key = event.keyCode;
+      if (key === 37 && d !== "RIGHT") {
+        d = "LEFT";
+      } else if (key === 38 && d !== "DOWN") {
+        d = "UP";
+      } else if (key === 39 && d !== "LEFT") {
+        d = "RIGHT";
+      } else if (key === 40 && d !== "UP") {
+        d = "DOWN";
+      }
+    }
+
+    function collision(head, array) {
+      for (let i = 0; i < array.length; i++) {
+        if (head.x === array[i].x && head.y === array[i].y) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    function draw() {
+      // Tekst achtergrond
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = 0; i < snake.length; i++) {
+        ctx.fillStyle = (i === 0) ? "#007BFF" : "#333";
+        ctx.fillRect(snake[i].x, snake[i].y, box, box);
+        ctx.strokeStyle = "#fff";
+        ctx.strokeRect(snake[i].x, snake[i].y, box, box);
+      }
+
+      // Teken het voedsel
+      ctx.fillStyle = "#ff0000";
+      ctx.fillRect(food.x, food.y, box, box);
+
+      // Bereken de nieuwe positie van de slangkop
+      let snakeX = snake[0].x;
+      let snakeY = snake[0].y;
+      if (d === "LEFT") snakeX -= box;
+      if (d === "UP") snakeY -= box;
+      if (d === "RIGHT") snakeX += box;
+      if (d === "DOWN") snakeY += box;
+
+      // Als de slang het voedsel eet
+      if (snakeX === food.x && snakeY === food.y) {
+        score++;
+        scoreEl.innerHTML = "Score: " + score;
+        food = {
+          x: Math.floor(Math.random() * 19 + 1) * box,
+          y: Math.floor(Math.random() * 19 + 1) * box
+        };
+        // Geen staart verwijderen, de slang groeit
+      } else {
+        snake.pop();
+      }
+
+      // Nieuwe kop maken
+      let newHead = { x: snakeX, y: snakeY };
+
+      // Game over condities
+      if (
+        snakeX < 0 || snakeX >= canvas.width ||
+        snakeY < 0 || snakeY >= canvas.height ||
+        collision(newHead, snake)
+      ) {
+        clearInterval(game);
+        restartButton.style.display = "block";
+        return;
+      }
+
+      snake.unshift(newHead);
+    }
+
+    let game = setInterval(draw, 100);
+
+    restartButton.addEventListener("click", function() {
+      location.reload();
+    });
+  </script>
+</body>
+</html>
